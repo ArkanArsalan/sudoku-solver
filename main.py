@@ -1,8 +1,7 @@
 from sudoku import Sudoku
+from sudokuGUI import SudokuGUI
 
-board = [
-
-]
+board = []
 
 def main():
     with open("./initial_state/init_state1.txt", "r") as file:
@@ -13,11 +12,8 @@ def main():
             numbers = [int(num) for num in line.split()]
             board.append(numbers)
 
-    sudoku = Sudoku(board)
-    sudoku.print_board()
-    sudoku.solve()
-    print("\nResult")
-    sudoku.print_board()
+    gui = SudokuGUI(board)
+    gui.window.mainloop()
 
 
 if __name__ == "__main__":
