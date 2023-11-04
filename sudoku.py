@@ -3,20 +3,27 @@ class Sudoku():
         self.board = board
 
     def solve(self):
+        # Get position of empty cell
         empty_cell = self.find_empty()
         
+        # Check if empty cell exist or not
         if not empty_cell:
             return True
         else:
             row, col = empty_cell
 
+        # Iterate from 1 to 9
         for num in range(1,10):
+            # Check if number is valid for the current cell
             if self.valid(num, (row, col)):
+                # Insert the number to the cell
                 self.board[row][col] = num
 
+                # Recursive case
                 if self.solve():
                     return True
 
+                # If any number is invalid, current cell back to 0
                 self.board[row][col] = 0
 
         return False
@@ -44,26 +51,33 @@ class Sudoku():
         return True
 
     def print_board(self):
+        # Print horizontal line
         for i in range(len(self.board) + 1):
             if i % 3 == 0:
                 print("- - - - - - - - - - - - - ")
                 if i == 9:
                     break
-
+            
             for j in range(len(self.board[0]) + 1):
+                # Print vertical line
                 if j % 3 == 0:
                     if j == 9:
                         print("| ")
                     else:
                         print("| ", end="")
 
+                # Print number
                 if j <= 8:
                     print(str(self.board[i][j]) + " ", end="")
 
     def find_empty(self):
+        # Iterate all row
         for i in range(len(self.board)):
+            # Iterate all column
             for j in range(len(self.board[0])):
+                # Check if the cell still empty or not, return the position if empty
                 if self.board[i][j] == 0:
                     return (i, j) 
-
+        
+        # No empty cell
         return None
