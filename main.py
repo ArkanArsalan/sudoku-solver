@@ -1,4 +1,4 @@
-from sudoku import Sudoku
+from sudoku_solver1 import SudokuSolver1
 from sudokuGUI import SudokuGUI
 from initial_board import open_file
 

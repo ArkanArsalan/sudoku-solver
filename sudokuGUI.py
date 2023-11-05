@@ -1,5 +1,5 @@
 import tkinter as tk
-from sudoku import Sudoku
+from sudoku_solver1 import SudokuSolver1
 
 class SudokuGUI:
     def __init__(self, board):
@@ -8,7 +8,7 @@ class SudokuGUI:
         self.window.title("Sudoku solver")
         self.create_board()
         self.create_solve_button()
-        self.sudoku = Sudoku(self.board)
+        self.sudoku = SudokuSolver1(self.board)
 
     def create_board(self):
         for i in range(9):
