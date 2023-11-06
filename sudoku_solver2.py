@@ -3,6 +3,7 @@ import copy
 class SudokuSolver2():
     def __init__(self, board):
         self.board = board
+        self.count = 0
 
     def get_empty_cells(self):
         # Initialize list to store empty cells
@@ -120,6 +121,8 @@ class SudokuSolver2():
         # Get the all possible values for current cell
         values = domain[cell]
 
+        self.count += 1
+
         # Loop through all possible values
         for value in values:
             # Insert the value to the cell
@@ -134,8 +137,7 @@ class SudokuSolver2():
 
             # Check whether all the empty cells in the new_empty_cells list still have possible values in the new_domain
             if all(len(new_domain[cell]) > 0 for cell in new_empty_cells):
-                result = self._solve(new_empty_cells, new_domain)
-                if result:
+                if self._solve(new_empty_cells, new_domain):
                     return True
 
         # Backtrack

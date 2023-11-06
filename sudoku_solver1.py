@@ -1,6 +1,7 @@
 class SudokuSolver1():
     def __init__(self, board):
         self.board = board
+        self.count = 0
 
     def solve(self):
         # Get position of empty cell
@@ -12,6 +13,8 @@ class SudokuSolver1():
         else:
             row, col = empty_cell
 
+        self.count += 1
+        
         # Iterate from 1 to 9
         for num in range(1,10):
             # Check if number is valid for the current cell
