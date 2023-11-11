@@ -1,9 +1,11 @@
 import copy
+import time
 
 class SudokuSolver2():
     def __init__(self, board):
         self.board = board
         self.count = 0
+        self.delta = 0
 
     def get_empty_cells(self):
         # Initialize list to store empty cells
@@ -98,6 +100,8 @@ class SudokuSolver2():
         return minimum_cell
 
     def solve(self):
+        start = time.time()
+
         # Get all empty cells in sudoku
         empty_cells = self.get_empty_cells()
 
@@ -110,6 +114,10 @@ class SudokuSolver2():
 
         # Solve the sudoku
         self._solve(empty_cells, domain)
+
+        end = time.time()
+        self.delta = (end - start)
+
 
     def _solve(self, empty_cells, domain):
         if not empty_cells:

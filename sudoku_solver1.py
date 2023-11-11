@@ -1,9 +1,18 @@
+import time
+
 class SudokuSolver1():
     def __init__(self, board):
         self.board = board
         self.count = 0
+        self.delta = 0
 
     def solve(self):
+        start = time.time()
+        self._solve()
+        end = time.time()
+        self.delta = (end - start)
+
+    def _solve(self):
         # Get position of empty cell
         empty_cell = self.find_empty()
         
@@ -23,11 +32,13 @@ class SudokuSolver1():
                 self.board[row][col] = num
 
                 # Recursive case
-                if self.solve():
+                if self._solve():
                     return True
 
                 # If any number is invalid, current cell back to 0
                 self.board[row][col] = 0
+
+
 
         return False
 

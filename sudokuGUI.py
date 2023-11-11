@@ -51,6 +51,7 @@ class SudokuGUI:
         self.sudoku1.print_board()
         self.update_board()
         print(f"Total recursive call: {self.sudoku1.count}")
+        print(f"Completion time: {self.sudoku1.delta}")
 
     def solve_sudoku_method2(self):
         print("\nSolving using bactracking, forward checking, and MRV")
@@ -58,6 +59,8 @@ class SudokuGUI:
         self.sudoku2.print_board()
         self.update_board()
         print(f"Total recursive call: {self.sudoku2.count}")
+        print(f"Completion time: {self.sudoku2.delta}")
+
 
     def reset(self):
         self.board = copy.deepcopy(self.init_board)
